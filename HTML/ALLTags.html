@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete HTML & CSS Demo</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header, nav, main, aside, footer {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        header {
+            background-color: #0077cc;
+            color: white;
+        }
+
+        nav {
+            background-color: #e2e2e2;
+        }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 15px;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #0077cc;
+                font-weight: bold;
+            }
+
+        main {
+            background-color: #fff;
+        }
+
+        aside {
+            background-color: #f9f9f9;
+            border-left: 4px solid #0077cc;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+            margin: 10px 0;
+            transition: transform 0.3s ease;
+        }
+
+            .box:hover {
+                transform: scale(1.1);
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input, textarea, select, button {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .flex {
+            display: flex;
+            gap: 10px;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Complete HTML & CSS Demo</h1>
+        <p>This page showcases all major HTML and CSS elements.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Text Elements</h2>
+            <p>This is a <strong>strong</strong> tag and <em>emphasized</em> text.</p>
+            <p class="highlight">This paragraph is highlighted using a CSS class.</p>
+            <blockquote>This is a blockquote element.</blockquote>
+            <code>console.log("Hello World");</code>
+        </section>
+
+        <section>
+            <h2>Lists</h2>
+            <ul>
+                <li>Unordered List Item</li>
+                <li>Another Item</li>
+            </ul>
+            <ol>
+                <li>Ordered List Item</li>
+                <li>Second Item</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Table</h2>
+            <table>
+                <tr><th>Name</th><th>Age</th></tr>
+                <tr><td>Sai</td><td>25</td></tr>
+                <tr><td>Alex</td><td>30</td></tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Form</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" />
+
+                <label for="message">Message:</label>
+                <textarea id="message" rows="4"></textarea>
+
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>CSS Layouts</h2>
+            <div class="grid">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+
+            <div class="flex">
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </section>
+    </main>
+
+    <aside>
+        <h3>Sidebar</h3>
+        <p>This is an aside section for additional info.</p>
+    </aside>
+
+    <footer>
+        <p>&copy; 2025 Sai's Dev Tutorials</p>
+    </footer>
+
+</body>
+</html>
