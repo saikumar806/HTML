@@ -124,6 +124,22 @@
             background-color: yellow;
             font-weight: bold;
         }
+        #myid
+        {
+            background-color:aqua;
+        }
+        #newid
+        {
+            background-color:blueviolet;
+        }
+        #tables{
+            background-color:burlywood;
+        }
+        #forms {
+            background-color: ButtonFace;
+            
+        }
+
     </style>
 </head>
 <body>
@@ -138,11 +154,14 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">Tutorials</a></li>
             <li><a href="#">Contact</a></li>
+            <li><a href="#">ContactUs</a></li>
+            <li><a href="#">AboutUS</a></li>
+            <li><a href="#">Location</a></li>
         </ul>
     </nav>
 
     <main>
-        <section>
+        <section id="myid">
             <h2>Text Elements</h2>
             <p>This is a <strong>strong</strong> tag and <em>emphasized</em> text.</p>
             <p class="highlight">This paragraph is highlighted using a CSS class.</p>
@@ -150,7 +169,7 @@
             <code>console.log("Hello World");</code>
         </section>
 
-        <section>
+        <section id="newid">
             <h2>Lists</h2>
             <ul>
                 <li>Unordered List Item</li>
@@ -162,7 +181,7 @@
             </ol>
         </section>
 
-        <section>
+        <section id="tables">
             <h2>Table</h2>
             <table>
                 <tr><th>Name</th><th>Age</th></tr>
@@ -171,8 +190,8 @@
             </table>
         </section>
 
-        <section>
-            <h2>Form</h2>
+        <section id="forms">
+            <h2 >Form</h2>
             <form>
                 <label for="name">Name:</label>
                 <input type="text" id="name" placeholder="Enter your name" />

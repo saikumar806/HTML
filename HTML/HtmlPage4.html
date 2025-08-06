@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <button onclick="myFunction()">Click</button>
+    <p id="demo"></p>
+    <script>
+function myFunction(){
+debugger;
+var time=new Date().getHours();
+var greetings;
+if(time<10)
+{
+greetings="Good Morning";
+}
+else if(time<20){
+greetings="Good Day";
+}
+else
+{
+greetings="Good Evening";
+}
+
+
+document.getElementById("demo").innerHTML=greetings;
+}
+</script>
+</body>
+</html>

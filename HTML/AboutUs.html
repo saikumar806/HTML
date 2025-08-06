@@ -3,8 +3,43 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        body{
+            background-image:url('Images/Joy.png');
+            background-color:#eee;
+            background-repeat:no-repeat;
+            /*background-size:100%;*/
+            /*background-position:center;*/
+        }
+        span {
+            display: block;
+        }
+        /* Span now acts like a div */
+        div.inline {
+            display: inline;
+        }
+        /* Div now acts like a 
+span */
+        img {
+            display: inline-block;
+            width: 150px;
+        }
+        /* Image on 
+same line, but with set width */
+        .image-float {
+            float: left;
+            margin-right: 15px;
+        }
+
+        .content {
+            clear: both; /* Prevents content from wrapping around 
+the float *
+    </style>
 </head>
 <body>
-<h1>Welcome to AboutUs</h1>
+    <h1>Welcome to AboutUs</h1>
+    <p>
+        This is a <span  style="font-weight: bold;">bold</span>Word</p>
+    
 </body>
 </html>

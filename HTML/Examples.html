@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced JS Task Manager</title>
+    <style>
+        /* hi
+           Beginner Level
+Start with the fundamentals:
+- Variables (let, const, var)
+- Data types (string, number, boolean, object, array)
+- Operators and expressions
+- Conditional statements (if, else, switch)
+- Loops (for, while, do...while)
+- Functions (declaration, expression, arrow functions)
+
+            Intermediate Level
+Build logic and structure:
+- Arrays and array methods (map, filter, reduce)
+- Objects and object manipulation
+- DOM manipulation (selecting elements, events)
+- Form validation
+- Error handling (try...catch)
+
+            Advanced Level
+Dive into deeper concepts:
+- Closures and scope
+- Prototypes and inheritance
+- Classes and OOP
+- Asynchronous JavaScript (callbacks, promises, async/await)
+- Modules and bundling
+- Design patterns in JS
+- Performance optimization
+
+       */
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        #taskForm {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-left: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>📝 Task Manager</h2>
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="Enter a new task..." />
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        // 🔒 Module pattern using closure
+        const TaskManager = (() => {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+            const saveTasks = () => localStorage.setItem('tasks', JSON.stringify(tasks));
+
+            const addTask = (text) => {
+                const task = { id: Date.now(), text, completed: false };
+                tasks.push(task);
+                saveTasks();
+                return task;
+            };
+
+            const deleteTask = (id) => {
+                tasks = tasks.filter(task => task.id !== id);
+                saveTasks();
+            };
+
+            const toggleTask = (id) => {
+                tasks = tasks.map(task =>
+                    task.id === id ? { ...task, completed: !task.completed } : task
+                );
+                saveTasks();
+            };
+
+            const getTasks = () => tasks;
+
+            return { addTask, deleteTask, toggleTask, getTasks };
+        })();
+
+        // 🎯 DOM references
+        const taskForm = document.getElementById('taskForm');
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        // 🔁 Render tasks
+        const renderTasks = () => {
+            taskList.innerHTML = '';
+            TaskManager.getTasks().forEach(({ id, text, completed }) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                  <span style="text-decoration:${completed ? 'line-through' : 'none'}">${text}</span>
+                  <div>
+                    <button onclick="handleToggle(${id})">✅</button>
+                    <button onclick="handleDelete(${id})">🗑️</button>
+                  </div>
+                `;
+                taskList.appendChild(li);
+            });
+        };
+
+        // 🧠 Event handlers
+        taskForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const text = taskInput.value.trim();
+            if (text) {
+                TaskManager.addTask(text);
+                taskInput.value = '';
+                renderTasks();
+            }
+        });
+
+        window.handleDelete = (id) => {
+            TaskManager.deleteTask(id);
+            renderTasks();
+        };
+
+        window.handleToggle = (id) => {
+            TaskManager.toggleTask(id);
+            renderTasks();
+        };
+
+        // 🔄 Initial render
+        renderTasks();</script>
+
+    <!--hi
+
+                - Closure & Encapsulation: The IIFE ((() => { ... })()) creates a private scope for tasks.
+        - Local Storage: Tasks are saved and retrieved from localStorage to persist data across page reloads.
+        - CRUD Operations:
+        - addTask(text): Adds a new task with a unique id.
+        - deleteTask(id): Removes a task by its id.
+        - toggleTask(id): Toggles the completed status.
+        - getTasks(): Returns the current task list.
+
+
+            What it does:
+    - Clears the task list.
+    - Loops through tasks and creates <li> elements.
+    - Applies strikethrough style if the task is completed.
+    - Adds buttons to toggle and delete tasks.
+    -->
+
+</body>
+</html>

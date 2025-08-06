@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    Number of elements
+    <p id="hi"></p>
+    <script>
+        const fruits = ["Apple", "Banana", "Cherry", "Orange"];
+        let size = fruits.length;
+        fruits.length = 2;
+        document.getElementById("hi").innerHTML = fruits;
+        /*
+        Push()::Adds one item at the end
+        pop():removes last item
+        shift:removes first item
+        unshift:add item to the begning,
+        concat():combines arrays
+        join():string format
+        slice():returns 
+
+
+        DOM:document object model is a tree like structure 
+        created by browser to represent html page.
+        DOM manipulation means using java script to access ,change ,add
+        or remove elements and styles dynamically.
+
+
+        document.getElementById("myid");
+        document.getElementByClassName("myclass");
+        document.getElementByTagName("div");
+        document.querySelector("myclass"); css style selector
+        document.querySelectorAll("p");all matching elements
+
+        Objects and object manipulation:
+        let person=
+        {
+        name:"ABC",
+        age:21,
+        isStudent:true;
+        greet:function()
+        {
+
+        console.log("Welcome");
+        }
+        adding a new properties:
+        person.language="English";
+
+        looping:
+        for(let key in person)
+        {
+
+        console.log(key+""+person[key]);
+        }
+
+        console.long(object.keys(person));
+         console.long(object.values(person));
+          console.long(object.entries(person));
+        }
+
+         Closures:
+         A  Closures is formed when a function is defiend inside another 
+         function and accesses varibales from the outer function scope.
+
+         function outer(){
+
+         let message="Hello from  the outer scope";
+         function inner()
+         {
+
+         console.log(message);
+         }
+         return inner;
+         }
+         const greet=outer();
+         greet();
+
+
+         RealExample:
+         function createCounter()
+         {
+
+         let count=0;
+         return function()
+         {
+
+         count++;
+         return count;
+         };
+         }
+         const counter=createCounter();
+         console.log(counter());
+         console.log(counter());
+         console.log(counter());
+
+         Classes and OOP:
+
+         a class is a blue print for creating objects.
+         it defines properties and behaviour that the objects will have.
+
+         ex:
+         class scooter
+         {
+
+         constructor(brand,batterllelvel)
+         {
+
+         this.brand=brand;
+         this.batterylevel=batterylevel;
+         }
+
+         ride()
+         {
+         Console.log('${this.brand} is riding with {this.batterlevel});
+         }
+
+         }
+         const myscooter=new Scooter("OLA",85);
+         myscooter.ride();
+
+
+         Quote Generator
+Concepts: DOM manipulation, arrays, event handling
+Features:
+- Display a random quote from a list
+- Button to generate a new quote
+const quotes = [
+  "Code is like humor. When you have to explain it, it’s bad.",
+  "JavaScript is the duct tape of the Internet.",
+  "Simplicity is the soul of efficiency."
+];
+
+document.getElementById('generateBtn').addEventListener('click', () => {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+});
+
+
+
+🎨 2. Color Flipper
+Concepts: DOM, randomization, styling
+Features:
+- Click a button to change the background color randomly
+const colors = ['red', 'blue', 'green', 'purple', 'orange'];
+
+document.getElementById('colorBtn').addEventListener('click', () => {
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.body.style.backgroundColor = randomColor;
+});
+
+
+
+⏱️ 3. Digital Clock
+Concepts: setInterval, Date object, formatting
+Features:
+- Real-time clock that updates every second
+function updateClock() {
+  const now = new Date();
+  const time = now.toLocaleTimeString();
+  document.getElementById('clock').textContent = time;
+}
+
+setInterval(updateClock, 1000);
+
+
+
+🧮 4. Simple Calculator
+Concepts: Event handling, arithmetic, input validation
+Features:
+- Add, subtract, multiply, divide two numbers
+function calculate(op) {
+  const a = parseFloat(document.getElementById('num1').value);
+  const b = parseFloat(document.getElementById('num2').value);
+  let result;
+  if (op === '+') result = a + b;
+  else if (op === '-') result = a - b;
+  else if (op === '*') result = a * b;
+  else if (op === '/') result = b !== 0 ? a / b : 'Error';
+  document.getElementById('result').textContent = result;
+}
+
+
+
+🎲 5. Dice Roller
+Concepts: Random numbers, image updates
+Features:
+- Roll a dice and show the result with an image or number
+document.getElementById('rollBtn').addEventListener('click', () => {
+  const roll = Math.floor(Math.random() * 6) + 1;
+  document.getElementById('diceResult').textContent = `You rolled: ${roll}`;
+});
+
+
+
+        */
+    </script>
+
+</body>
+</html>

@@ -69,9 +69,19 @@
   <ItemGroup>
     <Content Include="AboutUs.html" />
     <Content Include="ALLTags.html" />
+    <Content Include="ColorFlipper.html" />
     <Content Include="Contact.html" />
+    <Content Include="CSS\Style.css" />
+    <Content Include="CSS\StyleSheet1.css" />
+    <Content Include="Examples.html" />
     <Content Include="Home.html" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="HtmlPage2.html" />
+    <Content Include="HtmlPage3.html" />
+    <Content Include="HtmlPage4.html" />
+    <Content Include="HtmlPage5.html" />
+    <Content Include="Images\Joy.png" />
+    <Content Include="QuoteGenerator.html" />
     <Content Include="Registration.html" />
     <Content Include="Web.config" />
   </ItemGroup>
