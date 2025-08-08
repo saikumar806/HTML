@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Notes Manager</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 1rem;
+            background: #f0f0f0;
+            transition: background 0.3s;
+        }
+
+            body.dark {
+                background: #1e1e1e;
+                color: #fff;
+            }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input, button {
+            margin: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .note {
+            background: #fff;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-left: 5px solid #007acc;
+        }
+
+        body.dark .note {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📝 Smart Notes</h1>
+        <button id="toggle-theme">Toggle Theme</button>
+    </header>
+    <section>
+        <input type="text" id="search" placeholder="Search notes..." />
+        <form id="note-form">
+            <input type="text" id="note-text" placeholder="Enter note..." required />
+            <input type="text" id="note-tag" placeholder="Tag (optional)" />
+            <button type="submit">Add Note</button>
+        </form>
+        <ul id="notes-list"></ul>
+    </section>
+
+    <script>// Storage Module
+    const Storage = {
+      save(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+      },
+      load(key) {
+        return JSON.parse(localStorage.getItem(key)) || [];
+      }
+    };
+
+    // Notes Logic
+    const Notes = (() => {
+      let notes = [];
+
+      return {
+        init(initialNotes) {
+          notes = initialNotes;
+        },
+          add(text, tag) {
+              debugger;
+          const note = {
+            id: Date.now(),
+            text,
+            tag,
+            created: new Date().toISOString()
+          };
+          notes.push(note);
+          return note;
+        },
+          delete(id) {
+              debugger;
+          notes = notes.filter(note => note.id !== id);
+        },
+          search(keyword) {
+              debugger;
+          return notes.filter(note =>
+            note.text.toLowerCase().includes(keyword.toLowerCase()) ||
+            note.tag?.toLowerCase().includes(keyword.toLowerCase())
+          );
+        },
+        getAll() {
+          return [...notes];
+        }
+      };
+    })();
+
+    // UI Module
+    const UI = (() => {
+      const list = document.getElementById('notes-list');
+
+      const render = (notes) => {
+        list.innerHTML = notes.map(note => `
+          <li class="note" data-id="${note.id}">
+            <strong>${note.tag ? `[${note.tag}]` : ''}</strong> ${note.text}
+            <button class="delete">❌</button>
+          </li>
+        `).join('');
+      };
+
+      const bindDelete = () => {
+        list.addEventListener('click', (e) => {
+          if (e.target.classList.contains('delete')) {
+            const id = +e.target.closest('.note').dataset.id;
+            document.dispatchEvent(new CustomEvent('note:delete', { detail: id }));
+          }
+        });
+      };
+
+      return { render, bindDelete };
+    })();
+
+    // App Controller
+    const form = document.getElementById('note-form');
+    const searchInput = document.getElementById('search');
+    const themeToggle = document.getElementById('toggle-theme');
+    const NOTES_KEY = 'smart-notes';
+
+    const loadNotes = () => {
+      const saved = Storage.load(NOTES_KEY);
+      Notes.init(saved);
+      UI.render(saved);
+    };
+
+    const saveNotes = () => {
+      const all = Notes.getAll();
+      setTimeout(() => Storage.save(NOTES_KEY, all), 300); // Simulate async
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = document.getElementById('note-text').value;
+      const tag = document.getElementById('note-tag').value;
+      Notes.add(text, tag);
+      UI.render(Notes.getAll());
+      saveNotes();
+      form.reset();
+    });
+
+    searchInput.addEventListener('input', () => {
+      const keyword = searchInput.value;
+      const results = Notes.search(keyword);
+      UI.render(results);
+    });
+
+    document.addEventListener('note:delete', (e) => {
+      Notes.delete(e.detail);
+      UI.render(Notes.getAll());
+      saveNotes();
+    });
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    UI.bindDelete();
+    loadNotes();</script>
+</body>
+</html>

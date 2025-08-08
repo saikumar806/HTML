@@ -26,7 +26,8 @@
 <body>
     <h1>Color Flipper</h1>
     <p>Click the button to change the background color randomly</p>
-    <button id="colorBtn">Flip Color</button>
+    <button id="colorBtn" onclick="updateClock()">Flip Color</button>
+    <p id="clock"></p>
     <script>
         const colors = ['red', 'blue', 'green', 'purple', 'orange','white','black'];
 
@@ -34,6 +35,14 @@
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             document.body.style.backgroundColor = randomColor;
         });
+        //function updateClock() {
+        //    const now = new Date();
+        //    const time = now.toLocaleTimeString();
+        //    document.getElementById('clock').textContent = time;
+        //}
+
+      //  setInterval(updateClock, 1000);
+
     </script>
 
 </body>

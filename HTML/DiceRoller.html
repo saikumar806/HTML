@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            font-family:'Segoe UI',sans-serif;
+            background:linear-gradient(to right,#e0f7fa,#fff);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .dice-container
+        {
+            background:#ffffff;
+            padding:30px 40px;
+            border-radius:12px;
+            box-shadow:0 8px 16px rgba(0,0,0,0.2);
+            text-align:left;
+        }
+        h1{
+            margin-bottom:20px;
+            color:#00796b;
+        }
+        button{
+            padding:12px 20px;
+            font-size:18px;
+            background-color:#00796b;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            transition:background-color 0.3s ease;
+
+        }
+        button:hover{
+            background-color:#004d40;
+        }
+        #result
+        {
+            margin-top:20px;
+            font-size:22px;
+            color:#333;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="dice-container">
+        <h1>Dice Roller</h1>
+        <button id="roll">Roll the Dice</button>
+        <div id="result">You Rolled</div>
+
+    </div>
+
+    <script>
+
+        document.getElementById('roll').addEventListener('click', () => {
+            const roll = Math.floor(Math.random() * 6) + 1;
+            document.getElementById('result').textContent = `You rolled: ${roll}`;
+        });
+        //document.getElementById('roll').addEventListener('click', () => {
+        //    const roll = Math.floor(Math.random() * 6) + 1;
+        //    document.getElementById('result').textContent = 'You Rolled:${roll}';
+        //});
+
+        
+    </script>
+</body>
+</html>
